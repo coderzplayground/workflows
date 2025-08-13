@@ -1,0 +1,30 @@
+name: "ECR Image Push - Go Service"
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  release:
+    types: [created, published, edited, deleted, prereleased, released]
+
+jobs:
+  deploy-go:
+    name: "Deploy Go backend service to ECS"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine Environment Name
+        run: |
+          if [[ "${GITHUB_EVENT_NAME}" == "release" ]]; then
+            echo "INSTALLATION=production" >> $GITHUB_ENV
+          else
+            echo "INSTALLATION=shared" >> $GITHUB_ENV
+          fi
+
+      - name: Show INSTALLATION
+        run: |
+          echo "INSTALLATION is set to: $INSTALLATION"
+
