@@ -31,4 +31,15 @@ jobs:
       - name: Show Release Version
         if: ${{ github.event_name == 'release' }}
         run: |
+          if [[ "${GITHUB_REF}" =~ ^refs/tags/[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+            NAMESPACE=$(echo "${GITHUB_REF}" \
+              | sed -E 's/-(us|eu)//; s#^refs/tags/##' \
+              | tr '[:upper:]' '[:lower:]' \
+              | tr -d ' ' \
+              | tr './' '--' \
+              | cut -c1-20 \
+              | sed 's/-$//')
+          fi
+
+          echo "Namespace: $NAMESPACE"
           echo "Release tag: ${{ github.event.release.tag_name }}"
