@@ -28,3 +28,7 @@ jobs:
         run: |
           echo "INSTALLATION is set to: $INSTALLATION"
 
+      - name: Show Release Version
+        if: ${{ github.event_name == 'release' }}
+        run: |
+          echo "Release tag: ${{ github.event.release.tag_name }}"
