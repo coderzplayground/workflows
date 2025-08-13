@@ -1,4 +1,4 @@
-name: "ECR Image Push - Go Service"
+name: "Git Releases"
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
       - master
   release:
-    types: [created, published, edited, deleted, prereleased, released]
+    types: [released]
 
 jobs:
   deploy-go:
