@@ -39,7 +39,7 @@ jobs:
               | tr './' '--' \
               | cut -c1-20 \
               | sed 's/-$//')
+          echo "Namespace: $NAMESPACE"
           fi
 
-          echo "Namespace: $NAMESPACE"
           echo "Release tag: ${{ github.event.release.tag_name }}"
