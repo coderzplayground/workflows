@@ -43,3 +43,18 @@ jobs:
 
           echo "Namespace: $NAMESPACE"
           echo "Release tag: ${{ github.event.release.tag_name }}"
+
+
+      - name: Checkout a Repo and make a commit 
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/coderzplayground/workflow1.git
+          cd workflow1
+
+          # Make some change (example: add a file)
+          echo "Update from Repo A at $(date)" > update.txt
+          git add update.txt
+          git commit -m "Automated commit from Repo A"
+          git push origin main
+
