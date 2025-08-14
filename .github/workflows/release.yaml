@@ -46,8 +46,8 @@ jobs:
 
       - name: Checkout a Repo and make a commit 
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "omegazyadav"
+          git config --global user.email "omegazyadav1@gmail.com"
 
           git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/coderzplayground/workflow1.git
           cd workflow1
