@@ -51,8 +51,6 @@ jobs:
 
           git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/coderzplayground/workflow1.git
           cd workflow1
-
-          # Make some change (example: add a file)
           echo "Update from Repo A at $(date)" > update.txt
           git add update.txt
           git commit -m "Automated commit from Repo A"
